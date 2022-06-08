@@ -1,14 +1,19 @@
+PROGRAM = { DECLARATION };
+DECLARATION = IDENTIFIER, "(", VARS, ")",BLOCK;
 BLOCK = "{" , { STATEMENT }, "}" ;
-STATEMENT = ( λ | ASSIGNMENT | PRINT | BLOCK | WHILE | IF), ";" ;
-FACTOR = NUMBER | IDENTIFIER | (("+" | "-" | "!") , FACTOR) | "(" , RELEXPRESSION , ")" | SCANF;
+STATEMENT = ( λ | ";" | ASSIGNMENT | FUNCTION | PRINT | BLOCK | WHILE | IF | RETURN), λ | ";" ;
+FACTOR = NUMBER | IDENTIFIER | FUNCTION | (("+" | "-" | "!") , FACTOR) | "(" , RELEXPRESSION , ")" | SCANF;
 TERM = FACTOR, { ("*" | "/" | "&&"), FACTOR } ;
 EXPRESSION = TERM, { ("+" | "-" | "||"), TERM } ;
 RELEXPRESSION = EXPRESSION , {("<" | ">" | "==") , EXPRESSION, ( λ |"<" | ">" | "=="), ( λ | EXPRESSION )} ;
 WHILE = "while", "(", RELEXPRESSION ,")", STATEMENT;
 IF = "if", "(", RELEXPRESSION ,")", STATEMENT, (("else", STATEMENT) | λ );
 ASSIGNMENT = IDENTIFIER, "=" , EXPRESSION ;
+FUNCTION = IDENTIFIER, "(" , VARS, ")" ;
 PRINT = "print", "(" , EXPRESSION, ")" ;
 SCANF = "input";
+RETURN = "return", IDENTIFIER;
+VARS = λ | IDENTIFIER; {","; IDENTIFIER}
 IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
 NUMBER = DIGIT , { DIGIT } ;
 LETTER = ( a | ... | z | A | ... | Z ) ;
