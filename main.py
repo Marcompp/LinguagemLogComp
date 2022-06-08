@@ -566,8 +566,10 @@ class Parser:
 
             if self.tokens.actual.typ == ')':
                 self.tokens.selectNext()
+            while self.tokens.actual.typ == ';':
+                self.tokens.selectNext()
             kids.append(self.parseStatement())
-            if self.tokens.actual.typ == ';':
+            while self.tokens.actual.typ == ';':
                 self.tokens.selectNext()
             if self.tokens.actual.typ == 'else':
                 self.tokens.selectNext()

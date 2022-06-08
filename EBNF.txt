@@ -5,7 +5,7 @@ STATEMENT = ( λ | ";" | ASSIGNMENT | FUNCTION | PRINT | BLOCK | WHILE | IF | RE
 FACTOR = NUMBER | IDENTIFIER | FUNCTION | (("+" | "-" | "!") , FACTOR) | "(" , RELEXPRESSION , ")" | SCANF;
 TERM = FACTOR, { ("*" | "/" | "&&"), FACTOR } ;
 EXPRESSION = TERM, { ("+" | "-" | "||"), TERM } ;
-RELEXPRESSION = EXPRESSION , {("<" | ">" | "==") , EXPRESSION, ( λ |"<" | ">" | "=="), ( λ | EXPRESSION )} ;
+RELEXPRESSION = EXPRESSION , {("<" | ">" | "==") , EXPRESSION} ;
 WHILE = "while", "(", RELEXPRESSION ,")", STATEMENT;
 IF = "if", "(", RELEXPRESSION ,")", STATEMENT, (("else", STATEMENT) | λ );
 ASSIGNMENT = IDENTIFIER, "=" , EXPRESSION ;

@@ -1,0 +1,13 @@
+main()
+{
+  /* All bool and int operations */
+  y = 2
+  z = (y == 2);
+  print(y+z);
+  print(y-z);
+  print(y*z);
+  print(y/z);;
+  print(y == z)
+  print(y < z);
+  print(y > z);
+}
